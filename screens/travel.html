@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel - UberX × SpaceX</title>
+  <link rel="stylesheet" href="../css/app.css">
+  <link rel="stylesheet" href="../css/utils.css">
+  <link rel="stylesheet" href="../css/travel.css">
+</head>
+<body>
+  <header class="route">
+    <div class="chip">Earth</div>
+    <svg class="arc" viewBox="0 0 200 100">
+      <path d="M20 80 Q100 20 180 80" stroke="var(--accent)" stroke-width="2" stroke-dasharray="5,5" fill="none"/>
+    </svg>
+    <div class="chip">Mars</div>
+  </header>
+
+  <section class="bottom-sheet">
+    <input type="checkbox" id="toggle" hidden>
+    <label for="toggle" class="toggle-label">Toggle Ships</label>
+    <div class="collapsed">
+      <div class="ship">
+        <img src="../assets/img/crew-dragon.svg" alt="Crew Dragon" />
+        <div>
+          <h3>Crew Dragon</h3>
+          <p>48.5 ◈</p>
+          <p>Next Launch</p>
+          <p>18 Days 13 Hours</p>
+        </div>
+      </div>
+    </div>
+    <div class="expanded">
+      <div class="ship active">
+        <img src="../assets/img/crew-dragon.svg" alt="Crew Dragon" />
+        <div>
+          <h3>Crew Dragon</h3>
+          <p>$780.00</p>
+        </div>
+      </div>
+      <div class="ship">
+        <img src="../assets/img/starliner.svg" alt="Starliner" />
+        <div>
+          <h3>Starliner</h3>
+          <p>$800.00</p>
+        </div>
+      </div>
+      <div class="ship">
+        <img src="../assets/img/dream-chaser.svg" alt="Dream Chaser" />
+        <div>
+          <h3>Dream Chaser</h3>
+          <p>$750.00</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="confirm">
+    <a href="payment-methods.html" class="btn-primary">Connect Wallet</a>
+    <div class="swipe">
+      <label>Swipe to Confirm</label>
+      <input type="range" min="0" max="100" value="0" class="slider">
+    </div>
+  </section>
+</body>
+</html>
