@@ -1,12 +1,4 @@
-/* ============================================
-   UberX × SpaceX — planets-css.css
-   CSS-only Planet & Spacecraft Implementations
-   Use these as alternatives to SVG files
-   ============================================ */
 
-/* ============================================
-   PLANET BASE
-   ============================================ */
 .planet {
   position: relative;
   border-radius: 50%;
