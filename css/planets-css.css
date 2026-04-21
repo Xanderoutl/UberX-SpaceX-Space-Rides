@@ -14,7 +14,7 @@
   pointer-events: none;
 }
 
-/* ---- EARTH ---- */
+/* ---- TIERRA ---- */
 .planet--earth {
   background:
     radial-gradient(ellipse at 38% 32%, #4fc3f7 0%, #1565c0 45%, #0d2b6b 100%);
@@ -30,17 +30,17 @@
   inset: 0;
   border-radius: 50%;
   background:
-    /* Continents as blobs */
+    /* Continentes como manchas */
     radial-gradient(ellipse 28% 18% at 38% 44%, rgba(46,125,50,0.85) 0%, transparent 100%),
     radial-gradient(ellipse 16% 12% at 65% 38%, rgba(46,125,50,0.75) 0%, transparent 100%),
     radial-gradient(ellipse 18% 14% at 72% 60%, rgba(46,125,50,0.70) 0%, transparent 100%),
     radial-gradient(ellipse 14% 10% at 28% 65%, rgba(46,125,50,0.65) 0%, transparent 100%),
-    /* Cloud bands */
+    /* Bandas de nubes */
     radial-gradient(ellipse 70% 6% at 55% 32%, rgba(255,255,255,0.22) 0%, transparent 100%),
     radial-gradient(ellipse 55% 5% at 45% 62%, rgba(255,255,255,0.18) 0%, transparent 100%);
 }
 
-/* ---- MARS ---- */
+/* ---- MARTE ---- */
 .planet--mars {
   background:
     radial-gradient(ellipse at 36% 30%, #ef9a6e 0%, #c0392b 50%, #6b1a10 100%);
@@ -56,18 +56,18 @@
   inset: 0;
   border-radius: 50%;
   background:
-    /* Polar ice cap */
+    /* Casquete polar */
     radial-gradient(ellipse 36% 16% at 50% 8%, rgba(255,255,255,0.55) 0%, transparent 100%),
-    /* Valles Marineris - canyon */
+    /* Valles Marineris - cañón */
     radial-gradient(ellipse 70% 5% at 54% 52%, rgba(107,17,8,0.55) 0%, transparent 100%),
-    /* Craters */
+    /* Cráteres */
     radial-gradient(circle 12% at 38% 47%, rgba(169,50,38,0.6) 0%, transparent 100%),
     radial-gradient(circle 8% at 68% 60%, rgba(139,26,16,0.5) 0%, transparent 100%),
-    /* Dust */
+    /* Polvo */
     radial-gradient(ellipse 40% 10% at 65% 42%, rgba(239,154,110,0.2) 0%, transparent 100%);
 }
 
-/* ---- MOON ---- */
+/* ---- LUNA ---- */
 .planet--moon {
   background:
     radial-gradient(ellipse at 38% 32%, #e0e0e0 0%, #9e9e9e 55%, #424242 100%);
@@ -83,11 +83,11 @@
   inset: 0;
   border-radius: 50%;
   background:
-    /* Mare regions */
+    /* Regiones de mare */
     radial-gradient(circle 22% at 42% 46%, rgba(117,117,117,0.55) 0%, transparent 100%),
     radial-gradient(circle 15% at 66% 34%, rgba(97,97,97,0.45) 0%, transparent 100%),
     radial-gradient(circle 10% at 34% 68%, rgba(109,109,109,0.50) 0%, transparent 100%),
-    /* Impact craters (rings) */
+    /* Cráteres de impacto (anillos) */
     radial-gradient(circle 8% at 62% 62%, rgba(97,97,97,0.5) 0%, rgba(97,97,97,0.5) 60%, transparent 65%),
     radial-gradient(circle 6% at 78% 70%, rgba(85,85,85,0.45) 0%, rgba(85,85,85,0.45) 55%, transparent 60%);
 }
@@ -100,7 +100,7 @@
   box-shadow: 0 0 15px rgba(144,164,174,0.2);
 }
 
-/* ---- Size variants ---- */
+/* ---- Variantes de tamaño ---- */
 .planet--xs  { width: 32px;  height: 32px; }
 .planet--sm  { width: 48px;  height: 48px; }
 .planet--md  { width: 72px;  height: 72px; }
@@ -108,9 +108,7 @@
 .planet--xl  { width: 140px; height: 140px; }
 .planet--2xl { width: 200px; height: 200px; }
 
-/* ============================================
-   SPACECRAFT — CSS only
-   ============================================ */
+
 
 /* ---- CREW DRAGON (CSS) ---- */
 .ship {
@@ -185,7 +183,7 @@
 }
 
 /* ============================================
-   ORBITAL ARC — CSS decoration
+   ARCO ORBITAL — Decoración CSS
    ============================================ */
 .orbital-arc {
   position: absolute;
@@ -195,7 +193,7 @@
 }
 
 /* ============================================
-   ROUTE PATH — CSS dotted line
+   RUTA — Línea punteada CSS
    ============================================ */
 .route-path {
   display: flex;
@@ -225,7 +223,7 @@
 }
 
 /* ============================================
-   DESTINATION CHIP — BEM
+   CHIP DE DESTINO — BEM
    ============================================ */
 .destination-chip {
   display: inline-flex;
@@ -251,7 +249,7 @@
 }
 
 /* ============================================
-   PRICE TAG — Space currency
+   ETIQUETA DE PRECIO — Moneda espacial
    ============================================ */
 .price-tag {
   display: inline-flex;
@@ -281,7 +279,7 @@
 }
 
 /* ============================================
-   CREDIT CARD — BEM
+   TARJETA DE CRÉDITO — BEM
    ============================================ */
 .credit-card {
   background: linear-gradient(135deg, var(--glass-md), var(--glass));
@@ -361,7 +359,7 @@
 .credit-card__action-btn svg { width: 16px; height: 16px; }
 
 /* ============================================
-   SWIPE CONFIRM — CSS range trick
+   CONFIRMAR CON DESLIZ — Truco de rango CSS
    ============================================ */
 .swipe-confirm {
   position: relative;
