@@ -1,21 +1,473 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UberX × SpaceX - Splash</title>
-  <link rel="stylesheet" href="../css/app.css">
-  <link rel="stylesheet" href="../css/splash.css">
-  <meta http-equiv="refresh" content="3; url=home.html">
+  <title>UberX × SpaceX — Loading</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* =============================================
+       TOKENS
+       ============================================= */
+    :root {
+      --accent:      #00e5ff;
+      --accent-2:    #7c4dff;
+      --accent-warm: #ff6d00;
+      --space-deep:  #020510;
+      --space-mid:   #08102a;
+      --glass:       rgba(255,255,255,0.05);
+      --glass-b:     rgba(0,229,255,0.12);
+      --blur:        16px;
+      --font-disp:   'Orbitron', sans-serif;
+      --font-body:   'Space Grotesk', sans-serif;
+    }
+
+    /* =============================================
+       RESET
+       ============================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      width: 100%; height: 100%;
+      font-family: var(--font-body);
+      background: var(--space-deep);
+      color: #fff;
+      overflow: hidden;
+    }
+
+    /* =============================================
+       STARS
+       ============================================= */
+    .stars {
+      position: fixed; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 40%, #0a1a5c22 0%, transparent 70%),
+        radial-gradient(ellipse 60% 50% at 80% 20%, #2d005522 0%, transparent 60%),
+        var(--space-deep);
+    }
+    .stars::before, .stars::after { content: ''; position: absolute; inset: 0; }
+    .stars::before {
+      background-image:
+        radial-gradient(1px 1px at 8% 12%,  rgba(255,255,255,.8) 0%, transparent 100%),
+        radial-gradient(1px 1px at 22% 55%,  rgba(255,255,255,.5) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 38% 8%, rgba(255,255,255,.9) 0%, transparent 100%),
+        radial-gradient(1px 1px at 52% 72%,  rgba(168,216,255,.7) 0%, transparent 100%),
+        radial-gradient(1px 1px at 65% 28%,  rgba(255,255,255,.6) 0%, transparent 100%),
+        radial-gradient(2px 2px at 77% 60%,  rgba(255,255,255,.9) 0%, transparent 100%),
+        radial-gradient(1px 1px at 90% 15%,  rgba(255,255,255,.7) 0%, transparent 100%),
+        radial-gradient(1px 1px at 14% 82%,  rgba(255,255,255,.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 44% 44%,  rgba(200,230,255,.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 88% 78%,  rgba(255,255,255,.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 33% 92%,  rgba(255,255,255,.6) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 60% 5%, rgba(255,255,255,.8) 0%, transparent 100%),
+        radial-gradient(1px 1px at 5% 48%,   rgba(255,255,255,.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 72% 88%,  rgba(168,216,255,.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 18% 30%,  rgba(255,255,255,.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 85% 42%,  rgba(255,255,255,.6) 0%, transparent 100%);
+      animation: twinkle 3s ease-in-out infinite alternate;
+    }
+    .stars::after {
+      background-image:
+        radial-gradient(1px 1px at 28% 18%,  rgba(255,255,255,.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 48% 63%,  rgba(255,255,255,.4) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 70% 10%, rgba(255,255,255,.9) 0%, transparent 100%),
+        radial-gradient(1px 1px at 95% 52%,  rgba(255,255,255,.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 10% 70%,  rgba(200,230,255,.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 55% 35%,  rgba(255,255,255,.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 40% 82%,  rgba(255,255,255,.4) 0%, transparent 100%);
+      animation: twinkle 4.5s ease-in-out infinite alternate-reverse;
+    }
+    @keyframes twinkle {
+      0%   { opacity: .5; }
+      100% { opacity: 1; }
+    }
+
+    /* =============================================
+       SHOOTING STARS
+       ============================================= */
+    .shooting { position: fixed; inset: 0; z-index: 1; overflow: hidden; pointer-events: none; }
+    .shooting__star {
+      position: absolute;
+      width: 2px; height: 2px;
+      border-radius: 50%;
+      background: white;
+      box-shadow: 0 0 4px 1px white;
+    }
+    .shooting__star::after {
+      content: '';
+      position: absolute;
+      top: 50%; right: 2px;
+      width: 60px; height: 1px;
+      background: linear-gradient(90deg, rgba(255,255,255,.6), transparent);
+      transform: translateY(-50%);
+    }
+    .shooting__star:nth-child(1) {
+      top: 20%; left: -80px;
+      animation: shoot 6s 1s linear infinite;
+    }
+    .shooting__star:nth-child(2) {
+      top: 55%; left: -80px;
+      animation: shoot 8s 3.5s linear infinite;
+    }
+    .shooting__star:nth-child(3) {
+      top: 35%; left: -80px;
+      animation: shoot 5s 5s linear infinite;
+    }
+    @keyframes shoot {
+      0%   { transform: translateX(0)   translateY(0)  rotate(-15deg); opacity: 1; }
+      70%  { opacity: 1; }
+      100% { transform: translateX(110vw) translateY(30px) rotate(-15deg); opacity: 0; }
+    }
+
+    /* =============================================
+       MAIN LAYOUT
+       ============================================= */
+    .splash {
+      position: relative; z-index: 10;
+      width: 100%; height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+    }
+
+    /* =============================================
+       ORBITAL RINGS
+       ============================================= */
+    .orbital-wrap {
+      position: relative;
+      width: 280px; height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: fadeInUp .8s ease both;
+    }
+    .ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid transparent;
+    }
+    .ring--1 {
+      width: 260px; height: 260px;
+      border-color: rgba(0,229,255,.15);
+      animation: orbit-cw 8s linear infinite;
+    }
+    .ring--2 {
+      width: 200px; height: 200px;
+      border-color: rgba(124,77,255,.12);
+      animation: orbit-ccw 12s linear infinite;
+    }
+    .ring--3 {
+      width: 310px; height: 130px;
+      border: 1px dashed rgba(0,229,255,.10);
+      border-radius: 50%;
+      animation: orbit-cw 20s linear infinite;
+    }
+    /* Dot on ring 1 */
+    .ring--1::before {
+      content: '';
+      position: absolute;
+      top: -3px; left: 50%;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+      transform: translateX(-50%);
+    }
+    /* Dot on ring 2 */
+    .ring--2::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 50%;
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--accent-2);
+      box-shadow: 0 0 8px var(--accent-2);
+      transform: translateX(-50%);
+    }
+    @keyframes orbit-cw  { to { transform: rotate(360deg); } }
+    @keyframes orbit-ccw { to { transform: rotate(-360deg); } }
+
+    /* =============================================
+       LOGO CENTER
+       ============================================= */
+    .logo-center {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .logo-x {
+      font-family: var(--font-disp);
+      font-size: 3.5rem;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      background: linear-gradient(135deg, #fff 30%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 0 20px rgba(0,229,255,.4));
+    }
+    .logo-cross {
+      font-size: .7rem;
+      letter-spacing: .4em;
+      color: rgba(255,255,255,.35);
+      font-family: var(--font-body);
+      font-weight: 300;
+      text-transform: uppercase;
+      padding: 0 .25em;
+    }
+
+    /* =============================================
+       TEXT BLOCK
+       ============================================= */
+    .splash__text {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      animation: fadeInUp .8s .3s ease both;
+    }
+    .splash__title {
+      font-family: var(--font-disp);
+      font-size: clamp(1.1rem, 4vw, 1.4rem);
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--text-0);
+    }
+    .splash__sub {
+      font-size: .8rem;
+      font-weight: 300;
+      color: rgba(255,255,255,.4);
+      letter-spacing: .25em;
+      text-transform: uppercase;
+    }
+
+    /* =============================================
+       LOADING BAR
+       ============================================= */
+    .loader {
+      margin-top: 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      animation: fadeInUp .8s .5s ease both;
+    }
+    .loader__bar-wrap {
+      width: 200px; height: 2px;
+      background: rgba(255,255,255,.08);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+    .loader__bar {
+      height: 100%;
+      border-radius: 99px;
+      background: linear-gradient(90deg, var(--accent-2), var(--accent));
+      box-shadow: 0 0 8px var(--accent);
+      animation: load 3.5s cubic-bezier(.4,0,.2,1) forwards;
+    }
+    @keyframes load {
+      0%   { width: 0%; }
+      20%  { width: 18%; }
+      45%  { width: 42%; }
+      60%  { width: 58%; }
+      80%  { width: 79%; }
+      100% { width: 100%; }
+    }
+    .loader__dots {
+      display: flex; gap: 6px; align-items: center;
+    }
+    .loader__dot {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: bounce-dot .9s ease-in-out infinite;
+    }
+    .loader__dot:nth-child(2) { animation-delay: .15s; }
+    .loader__dot:nth-child(3) { animation-delay: .30s; }
+    @keyframes bounce-dot {
+      0%, 100% { transform: scale(.7); opacity: .4; }
+      50%       { transform: scale(1.3); opacity: 1; }
+    }
+    .loader__label {
+      font-size: .7rem;
+      letter-spacing: .2em;
+      color: rgba(255,255,255,.3);
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+
+    /* =============================================
+       SKIP LINK (testing only)
+       ============================================= */
+    .skip-link {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      font-size: .7rem;
+      letter-spacing: .12em;
+      color: rgba(255,255,255,.2);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color .2s;
+      z-index: 100;
+    }
+    .skip-link:hover { color: var(--accent); }
+
+    /* =============================================
+       REDIRECT OVERLAY — CSS trick: after 4.5s
+       fade out + pointer to home
+       (pure CSS: target :target on body or use
+       animation-fill-mode on a cover div)
+       ============================================= */
+    .redirect-cover {
+      position: fixed; inset: 0;
+      background: var(--space-deep);
+      z-index: 200;
+      pointer-events: none;
+      opacity: 0;
+      animation: coverFadeIn .6s 3.8s ease forwards;
+    }
+    @keyframes coverFadeIn {
+      0%   { opacity: 0; pointer-events: none; }
+      100% { opacity: 1; pointer-events: all; }
+    }
+    /* After cover appears, show "enter" link */
+    .auto-enter {
+      position: fixed;
+      inset: 0; z-index: 201;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0;
+      animation: fadeIn .5s 4.2s ease forwards;
+    }
+    .auto-enter__btn {
+      font-family: var(--font-disp);
+      font-size: .85rem;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-decoration: none;
+      padding: 14px 36px;
+      border: 1px solid rgba(0,229,255,.3);
+      border-radius: 99px;
+      background: rgba(0,229,255,.06);
+      backdrop-filter: blur(12px);
+      transition: background .2s, box-shadow .2s;
+    }
+    .auto-enter__btn:hover {
+      background: rgba(0,229,255,.12);
+      box-shadow: 0 0 24px rgba(0,229,255,.25);
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* =============================================
+       NEBULA GLOW
+       ============================================= */
+    .nebula {
+      position: fixed;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,229,255,.04) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none; z-index: 0;
+      animation: pulse-neb 4s ease-in-out infinite alternate;
+    }
+    @keyframes pulse-neb {
+      0%   { transform: translate(-50%,-50%) scale(.95); opacity: .6; }
+      100% { transform: translate(-50%,-50%) scale(1.05); opacity: 1; }
+    }
+
+    /* =============================================
+       ACCESSIBILITY
+       ============================================= */
+    .visually-hidden {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+
+    /* =============================================
+       RESPONSIVE
+       ============================================= */
+    @media (min-width: 1280px) {
+      body { display: flex; align-items: center; justify-content: center; }
+      .splash { width: 430px; min-height: 900px; border-radius: 40px; overflow: hidden; }
+    }
+  </style>
 </head>
 <body>
+
+  <h1 class="visually-hidden">UberX × SpaceX — Space Rides, preparando tu viaje</h1>
+
+  <!-- Stars & fx -->
+  <div class="stars" aria-hidden="true"></div>
+  <div class="nebula"  aria-hidden="true"></div>
+  <div class="shooting" aria-hidden="true">
+    <div class="shooting__star"></div>
+    <div class="shooting__star"></div>
+    <div class="shooting__star"></div>
+  </div>
+
+  <!-- SPLASH CONTENT -->
   <main class="splash">
-    <h1 class="visually-hidden">UberX × SpaceX Space Rides</h1>
-    <div class="logo">
-      <img src="../assets/img/logo-uberx-spacex.svg" alt="UberX × SpaceX" />
+
+    <!-- Logo + orbital rings -->
+    <div class="orbital-wrap" aria-hidden="true">
+      <div class="ring ring--1"></div>
+      <div class="ring ring--2"></div>
+      <div class="ring ring--3"></div>
+
+      <div class="logo-center">
+        <div class="logo-x">UX</div>
+        <div class="logo-cross">× SpaceX</div>
+      </div>
     </div>
-    <p class="subtitle">Preparing your space ride...</p>
-    <a href="home.html" class="skip">Skip</a>
+
+    <!-- Text -->
+    <div class="splash__text">
+      <p class="splash__title">Space Rides</p>
+      <p class="splash__sub">Preparing your journey…</p>
+    </div>
+
+    <!-- Loader -->
+    <div class="loader" role="status" aria-label="Cargando">
+      <div class="loader__bar-wrap">
+        <div class="loader__bar"></div>
+      </div>
+      <div class="loader__dots" aria-hidden="true">
+        <div class="loader__dot"></div>
+        <div class="loader__dot"></div>
+        <div class="loader__dot"></div>
+      </div>
+      <span class="loader__label">Initializing launch systems</span>
+    </div>
+
   </main>
+
+  <!-- Auto-transition overlay (CSS only) -->
+  <div class="redirect-cover" aria-hidden="true"></div>
+  <div class="auto-enter">
+    <a href="home.html" class="auto-enter__btn">Enter Mission Control</a>
+  </div>
+
+  <!-- Skip link for testing -->
+  <a href="home.html" class="skip-link" aria-label="Saltar pantalla de carga">skip →</a>
+
 </body>
 </html>

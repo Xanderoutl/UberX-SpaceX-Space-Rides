@@ -1,110 +1,881 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home - UberX × SpaceX</title>
-  <link rel="stylesheet" href="../css/app.css">
-  <link rel="stylesheet" href="../css/utils.css">
-  <link rel="stylesheet" href="../css/home.css">
+  <title>UberX × SpaceX — Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono&display=swap" rel="stylesheet">
+  <style>
+    /* =============================================
+       TOKENS
+       ============================================= */
+    :root {
+      --accent:     #00e5ff;
+      --accent-2:   #7c4dff;
+      --accent-w:   #ff6d00;
+      --space-deep: #020510;
+      --space-mid:  #08102a;
+      --glass:      rgba(255,255,255,0.055);
+      --glass-md:   rgba(255,255,255,0.09);
+      --glass-b:    rgba(255,255,255,0.10);
+      --blur:       14px;
+      --blur-sm:    8px;
+      --radius-xl:  24px;
+      --radius-lg:  18px;
+      --radius-md:  12px;
+      --radius-f:   9999px;
+      --font-d:     'Orbitron', sans-serif;
+      --font-b:     'Space Grotesk', sans-serif;
+      --font-m:     'Space Mono', monospace;
+      --text-0:     #ffffff;
+      --text-1:     rgba(255,255,255,.60);
+      --text-2:     rgba(255,255,255,.35);
+      --shadow-glow: 0 0 20px rgba(0,229,255,.2);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      font-family: var(--font-b);
+      background: var(--space-deep);
+      color: var(--text-0);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+    ul { list-style: none; }
+    a  { color: inherit; text-decoration: none; }
+    button { cursor: pointer; border: none; background: none; font: inherit; color: inherit; }
+
+    /* =============================================
+       STARS BG
+       ============================================= */
+    .stars-bg {
+      position: fixed; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 70% 55% at 15% 35%, #0a1a5c1a 0%, transparent 65%),
+        radial-gradient(ellipse 55% 45% at 85% 15%, #2d005518 0%, transparent 60%),
+        radial-gradient(ellipse 40% 35% at 60% 90%, #001a3018 0%, transparent 60%),
+        var(--space-deep);
+    }
+    .stars-bg::before {
+      content: ''; position: absolute; inset: 0;
+      background-image:
+        radial-gradient(1px 1px at 5%  10%, rgba(255,255,255,.7) 0%, transparent 100%),
+        radial-gradient(1px 1px at 18% 48%, rgba(255,255,255,.5) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 32% 6%, rgba(255,255,255,.8) 0%, transparent 100%),
+        radial-gradient(1px 1px at 50% 68%, rgba(168,216,255,.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 63% 22%, rgba(255,255,255,.6) 0%, transparent 100%),
+        radial-gradient(2px 2px at 78% 55%, rgba(255,255,255,.8) 0%, transparent 100%),
+        radial-gradient(1px 1px at 88% 12%, rgba(255,255,255,.7) 0%, transparent 100%),
+        radial-gradient(1px 1px at 12% 80%, rgba(255,255,255,.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 42% 42%, rgba(200,230,255,.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 92% 75%, rgba(255,255,255,.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 26% 88%, rgba(255,255,255,.5) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 70% 3%, rgba(255,255,255,.7) 0%, transparent 100%),
+        radial-gradient(1px 1px at 55% 33%, rgba(255,255,255,.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 4%  55%, rgba(255,255,255,.5) 0%, transparent 100%);
+      animation: twinkle 4s ease-in-out infinite alternate;
+    }
+    @keyframes twinkle { 0%{opacity:.5} 100%{opacity:1} }
+
+    /* =============================================
+       DEVICE FRAME
+       ============================================= */
+    .device {
+      position: relative; z-index: 10;
+      width: 100%; min-height: 100vh;
+      display: flex; flex-direction: column;
+      overflow-x: hidden;
+    }
+    @media (min-width: 1280px) {
+      body { display: flex; align-items: flex-start; justify-content: center; padding: 40px 0 80px; }
+      .device {
+        width: 430px; min-height: 900px;
+        border-radius: 40px; overflow: hidden;
+        box-shadow: 0 32px 80px rgba(0,0,0,.7), 0 0 60px rgba(0,229,255,.06);
+        border: 1px solid rgba(255,255,255,.06);
+      }
+    }
+
+    /* =============================================
+       SCROLLABLE CONTENT
+       ============================================= */
+    .page {
+      flex: 1;
+      overflow-y: auto;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+    }
+    .page::-webkit-scrollbar { display: none; }
+
+    /* =============================================
+       HEADER
+       ============================================= */
+    .header {
+      padding: 52px 24px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      animation: fadeInUp .5s ease both;
+    }
+    .header__greet {
+      display: flex; flex-direction: column; gap: 2px;
+    }
+    .header__sub {
+      font-size: .7rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 500;
+    }
+    .header__name {
+      font-family: var(--font-d);
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+    .header__avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-2), var(--accent));
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-d);
+      font-size: .7rem;
+      font-weight: 700;
+      color: #000;
+      flex-shrink: 0;
+      box-shadow: 0 0 14px rgba(0,229,255,.3);
+    }
+
+    /* =============================================
+       SECURITY BANNER
+       ============================================= */
+    .banner {
+      margin: 0 16px 20px;
+      padding: 16px 20px;
+      background: var(--glass);
+      border: 1px solid rgba(0,229,255,.14);
+      border-radius: var(--radius-xl);
+      backdrop-filter: blur(var(--blur));
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      animation: fadeInUp .5s .1s ease both;
+    }
+    .banner__icon {
+      width: 40px; height: 40px; flex-shrink: 0;
+      background: rgba(0,229,255,.1);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .banner__icon svg { width: 20px; height: 20px; color: var(--accent); }
+    .banner__text h3 {
+      font-family: var(--font-b);
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--text-0);
+      margin-bottom: 2px;
+    }
+    .banner__text p {
+      font-size: .72rem;
+      color: var(--text-1);
+      line-height: 1.4;
+    }
+
+    /* =============================================
+       QUICK ACTIONS
+       ============================================= */
+    .section-label {
+      padding: 0 24px;
+      font-size: .68rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--text-2);
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+    .quick-actions {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      padding: 0 16px;
+      margin-bottom: 28px;
+      animation: fadeInUp .5s .2s ease both;
+    }
+    .qa-btn {
+      background: var(--glass);
+      border: 1px solid var(--glass-b);
+      border-radius: var(--radius-lg);
+      backdrop-filter: blur(var(--blur));
+      padding: 18px 8px 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: border-color .2s, background .2s, transform .15s;
+      text-decoration: none;
+      color: var(--text-0);
+    }
+    .qa-btn:hover {
+      background: var(--glass-md);
+      border-color: rgba(0,229,255,.25);
+      transform: translateY(-2px);
+    }
+    .qa-btn:active { transform: scale(.97); }
+    .qa-btn__icon {
+      width: 44px; height: 44px;
+      border-radius: var(--radius-md);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .qa-btn__icon svg { width: 22px; height: 22px; }
+    .qa-btn__label {
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--text-1);
+    }
+    .qa-btn--travel .qa-btn__icon { background: rgba(0,229,255,.12); color: var(--accent); }
+    .qa-btn--explore .qa-btn__icon { background: rgba(124,77,255,.12); color: var(--accent-2); }
+    .qa-btn--book   .qa-btn__icon { background: rgba(255,109,0,.12); color: var(--accent-w); }
+
+    /* =============================================
+       SEARCH BAR
+       ============================================= */
+    .search-wrap {
+      padding: 0 16px;
+      margin-bottom: 28px;
+      position: relative;
+      animation: fadeInUp .5s .3s ease both;
+    }
+    .search-wrap__icon {
+      position: absolute;
+      left: 32px; top: 50%;
+      transform: translateY(-50%);
+      width: 18px; height: 18px;
+      color: var(--text-2);
+      pointer-events: none;
+    }
+    .search-wrap__clock {
+      position: absolute;
+      right: 32px; top: 50%;
+      transform: translateY(-50%);
+      width: 18px; height: 18px;
+      color: var(--text-2);
+      pointer-events: none;
+    }
+    .search-input {
+      width: 100%;
+      padding: 14px 48px;
+      background: var(--glass);
+      border: 1px solid var(--glass-b);
+      border-radius: var(--radius-f);
+      color: var(--text-0);
+      font-family: var(--font-b);
+      font-size: .875rem;
+      backdrop-filter: blur(var(--blur-sm));
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .search-input::placeholder { color: var(--text-2); }
+    .search-input:focus {
+      border-color: rgba(0,229,255,.35);
+      box-shadow: 0 0 0 3px rgba(0,229,255,.07);
+    }
+
+    /* =============================================
+       ASTRONAUT + HERO
+       ============================================= */
+    .hero {
+      padding: 0 16px 28px;
+      animation: fadeInUp .5s .15s ease both;
+    }
+    .hero__card {
+      position: relative;
+      background: linear-gradient(135deg, rgba(0,229,255,.07) 0%, rgba(124,77,255,.07) 100%);
+      border: 1px solid rgba(0,229,255,.15);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      padding: 28px 24px 0;
+      min-height: 220px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+    /* Glow orb inside card */
+    .hero__card::before {
+      content: '';
+      position: absolute;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,229,255,.08) 0%, transparent 70%);
+      top: -40px; right: -30px;
+      pointer-events: none;
+    }
+
+    .hero__copy {
+      flex: 1;
+      padding-bottom: 28px;
+      z-index: 2;
+    }
+    .hero__eyebrow {
+      font-size: .65rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+    .hero__headline {
+      font-family: var(--font-d);
+      font-size: 1.15rem;
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+    .hero__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 20px;
+      background: var(--accent);
+      border-radius: var(--radius-f);
+      font-size: .78rem;
+      font-weight: 700;
+      color: #000;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      transition: box-shadow .2s, transform .15s;
+      text-decoration: none;
+    }
+    .hero__cta:hover { box-shadow: var(--shadow-glow); transform: translateY(-1px); }
+    .hero__cta svg { width: 14px; height: 14px; }
+
+    /* ASTRONAUT SVG */
+    .hero__astro {
+      width: 160px;
+      flex-shrink: 0;
+      z-index: 2;
+      animation: float 3.5s ease-in-out infinite;
+      transform-origin: center bottom;
+      align-self: flex-end;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      33%       { transform: translateY(-10px) rotate(.8deg); }
+      66%       { transform: translateY(-5px) rotate(-.5deg); }
+    }
+
+    /* =============================================
+       DESTINATIONS LIST
+       ============================================= */
+    .dest-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      margin-bottom: 14px;
+    }
+    .dest-header__link {
+      font-size: .72rem;
+      color: var(--accent);
+      font-weight: 500;
+      letter-spacing: .05em;
+    }
+    .dest-list {
+      padding: 0 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 100px;
+      animation: fadeInUp .5s .4s ease both;
+    }
+    .dest-item {
+      background: var(--glass);
+      border: 1px solid var(--glass-b);
+      border-radius: var(--radius-xl);
+      backdrop-filter: blur(var(--blur));
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      cursor: pointer;
+      transition: border-color .2s, background .2s, transform .15s;
+      text-decoration: none;
+      color: var(--text-0);
+    }
+    .dest-item:hover {
+      background: var(--glass-md);
+      border-color: rgba(0,229,255,.2);
+      transform: translateX(3px);
+    }
+    /* planet thumbnails — CSS only */
+    .dest-item__planet {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .dest-item__planet::after {
+      content: '';
+      position: absolute; inset: 0;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 28%, rgba(255,255,255,.22) 0%, transparent 55%);
+    }
+    .planet-earth {
+      background: radial-gradient(ellipse at 38% 32%, #4fc3f7 0%, #1565c0 50%, #0d2b6b 100%);
+      box-shadow: 0 0 10px rgba(79,195,247,.3), inset -4px -4px 10px rgba(13,43,107,.5);
+    }
+    .planet-earth::before {
+      content: ''; position: absolute; inset: 0; border-radius: 50%;
+      background:
+        radial-gradient(ellipse 28% 18% at 38% 46%, rgba(46,125,50,.85) 0%, transparent 100%),
+        radial-gradient(ellipse 16% 12% at 66% 36%, rgba(46,125,50,.7) 0%, transparent 100%),
+        radial-gradient(ellipse 70% 6% at 55% 30%, rgba(255,255,255,.2) 0%, transparent 100%);
+    }
+    .planet-mars {
+      background: radial-gradient(ellipse at 36% 30%, #ef9a6e 0%, #c0392b 50%, #6b1a10 100%);
+      box-shadow: 0 0 10px rgba(192,57,43,.25), inset -4px -4px 10px rgba(107,26,16,.6);
+    }
+    .planet-mars::before {
+      content: ''; position: absolute; inset: 0; border-radius: 50%;
+      background:
+        radial-gradient(ellipse 36% 14% at 50% 8%, rgba(255,255,255,.5) 0%, transparent 100%),
+        radial-gradient(circle 12% at 38% 48%, rgba(169,50,38,.6) 0%, transparent 100%);
+    }
+    .planet-iss {
+      background: linear-gradient(135deg, #37474f, #90a4ae, #546e7a);
+      border-radius: 10px !important;
+      box-shadow: 0 0 10px rgba(144,164,174,.2);
+    }
+    .planet-moon {
+      background: radial-gradient(ellipse at 38% 32%, #e0e0e0 0%, #9e9e9e 55%, #424242 100%);
+      box-shadow: 0 0 8px rgba(189,189,189,.15), inset -4px -4px 10px rgba(66,66,66,.5);
+    }
+    .planet-moon::before {
+      content: ''; position: absolute; inset: 0; border-radius: 50%;
+      background:
+        radial-gradient(circle 20% at 42% 46%, rgba(117,117,117,.55) 0%, transparent 100%),
+        radial-gradient(circle 14% at 66% 34%, rgba(97,97,97,.45) 0%, transparent 100%);
+    }
+
+    .dest-item__info { flex: 1; }
+    .dest-item__name {
+      font-family: var(--font-d);
+      font-size: .85rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      margin-bottom: 3px;
+    }
+    .dest-item__sub {
+      font-size: .72rem;
+      color: var(--text-1);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .dest-item__dot { width: 3px; height: 3px; border-radius: 50%; background: var(--text-2); }
+    .dest-item__price {
+      font-family: var(--font-m);
+      font-size: .82rem;
+      font-weight: 700;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+    .dest-item__arrow {
+      width: 16px; height: 16px;
+      color: var(--text-2);
+      flex-shrink: 0;
+    }
+
+    /* =============================================
+       BOTTOM NAV
+       ============================================= */
+    .bottom-nav {
+      position: sticky;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 12px 16px 20px;
+      background: rgba(2,5,16,.85);
+      backdrop-filter: blur(20px);
+      border-top: 1px solid rgba(255,255,255,.07);
+      z-index: 100;
+    }
+    .nav-item {
+      display: flex; flex-direction: column; align-items: center; gap: 4px;
+      color: var(--text-2);
+      font-size: .6rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 6px 14px;
+      border-radius: var(--radius-md);
+      transition: color .2s;
+      cursor: pointer;
+    }
+    .nav-item svg { width: 22px; height: 22px; }
+    .nav-item:hover { color: var(--text-1); }
+    .nav-item[aria-current="page"],
+    .nav-item--active { color: var(--accent); }
+    .nav-item--active .nav-dot {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin: 0 auto;
+      display: block;
+    }
+
+    /* =============================================
+       KEYFRAMES
+       ============================================= */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* =============================================
+       RESPONSIVE
+       ============================================= */
+    @media (max-width: 480px) {
+      .hero__astro { width: 130px; }
+      .header { padding-top: 40px; }
+    }
+  </style>
 </head>
 <body>
-  <header class="header">
-    <div class="avatar"></div>
-    <h1>Good morning, Astronaut</h1>
-  </header>
 
-  <section class="banner">
-    <div class="glass-card">
-      <h2>Safety First</h2>
-      <p>Your space ride is secured with the latest technology.</p>
-      <!-- ilustración decorativa -->
-      <div class="illustration"></div>
-    </div>
-  </section>
+  <div class="stars-bg" aria-hidden="true"></div>
 
-  <section class="actions">
-    <a href="travel.html" class="action-btn">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(-30 12 12)"/>
-        <circle cx="12" cy="12" r="3"/>
-      </svg>
-      Travel
-    </a>
-    <a href="#" class="action-btn">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M4 6l4-2 10 5-4 2z"/><path d="M8 4l2 6"/>
-        <line x1="10" y1="10" x2="10" y2="20"/><line x1="7" y1="20" x2="13" y2="20"/><circle cx="18" cy="7" r="2"/>
-      </svg>
-      Explore
-    </a>
-    <a href="booking.html" class="action-btn">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="3" y="4" width="18" height="18" rx="2"/>
-        <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/>
-        <line x1="3" y1="10" x2="21" y2="10"/>
-      </svg>
-      Book
-    </a>
-  </section>
+  <div class="device">
+    <main class="page">
 
-  <section class="search">
-    <input type="search" placeholder="Where to…?" />
-    <span class="icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
-      </svg>
-    </span>
-  </section>
-
-  <section class="destinations">
-    <ul>
-      <li>
-        <img src="../assets/img/earth.svg" alt="Earth" />
-        <div>
-          <h3>Earth</h3>
-          <p>$0.00 - Instant</p>
+      <!-- HEADER -->
+      <header class="header">
+        <div class="header__greet">
+          <span class="header__sub">Good morning</span>
+          <h1 class="header__name">Commander</h1>
         </div>
-      </li>
-      <li>
-        <img src="../assets/img/mars.svg" alt="Mars" />
-        <div>
-          <h3>Mars</h3>
-          <p>$780.00 - 18 Days</p>
-        </div>
-      </li>
-      <li>
-        <img src="../assets/img/iss.svg" alt="ISS" />
-        <div>
-          <h3>ISS</h3>
-          <p>$500.00 - 2 Hours</p>
-        </div>
-      </li>
-      <li>
-        <img src="../assets/img/moon.svg" alt="Moon" />
-        <div>
-          <h3>Moon</h3>
-          <p>$400.00 - 3 Days</p>
-        </div>
-      </li>
-    </ul>
-  </section>
+        <div class="header__avatar" aria-label="Avatar de usuario">CM</div>
+      </header>
 
-  <nav class="bottom-nav">
-    <a href="home.html" aria-current="page">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M3 12L12 3l9 9"/><path d="M9 21V12h6v9"/><path d="M5 10v11h14V10"/>
-      </svg>
-      Home
-    </a>
-    <a href="#">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 2C12 2 7 6 7 13a5 5 0 0 0 10 0C17 6 12 2 12 2z"/>
-        <path d="M9 18s-2 1-2 3h10c0-2-2-3-2-3"/>
-        <line x1="12" y1="8" x2="12" y2="13"/><circle cx="12" cy="13" r="1" fill="currentColor" stroke="none"/>
-      </svg>
-      Journeys
-    </a>
-  </nav>
+      <!-- ASTRONAUT HERO CARD -->
+      <section class="hero" aria-label="Destaque de misión">
+        <div class="hero__card">
+          <div class="hero__copy">
+            <p class="hero__eyebrow">Next mission</p>
+            <h2 class="hero__headline">Ready for<br>liftoff?</h2>
+            <a href="travel.html" class="hero__cta">
+              Book now
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="9 18 15 12 9 6"/>
+              </svg>
+            </a>
+          </div>
+
+          <!-- ASTRONAUT SVG ILLUSTRATION -->
+          <svg class="hero__astro" viewBox="0 0 160 220" xmlns="http://www.w3.org/2000/svg" aria-label="Astronauta flotando" role="img">
+            <defs>
+              <radialGradient id="suit-grad" cx="40%" cy="35%" r="60%">
+                <stop offset="0%" stop-color="#e8edf5"/>
+                <stop offset="60%" stop-color="#c8d0dc"/>
+                <stop offset="100%" stop-color="#8a96a8"/>
+              </radialGradient>
+              <radialGradient id="helmet-glass" cx="35%" cy="30%" r="65%">
+                <stop offset="0%" stop-color="#4fc3f7" stop-opacity=".9"/>
+                <stop offset="40%" stop-color="#1976d2" stop-opacity=".85"/>
+                <stop offset="100%" stop-color="#0d2b6b" stop-opacity=".95"/>
+              </radialGradient>
+              <radialGradient id="visor-reflect" cx="30%" cy="25%" r="50%">
+                <stop offset="0%" stop-color="rgba(255,255,255,.55)"/>
+                <stop offset="100%" stop-color="transparent"/>
+              </radialGradient>
+              <linearGradient id="boot-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#90a4ae"/>
+                <stop offset="100%" stop-color="#37474f"/>
+              </linearGradient>
+              <linearGradient id="glove-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#b0bec5"/>
+                <stop offset="100%" stop-color="#546e7a"/>
+              </linearGradient>
+              <filter id="astro-glow">
+                <feGaussianBlur stdDeviation="3" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+
+            <!-- SUIT SHADOW / AMBIENT -->
+            <ellipse cx="80" cy="210" rx="45" ry="6" fill="rgba(0,229,255,.08)"/>
+
+            <!-- JETPACK -->
+            <rect x="68" y="100" width="26" height="38" rx="5" fill="#455a64"/>
+            <rect x="70" y="103" width="22" height="32" rx="3" fill="#546e7a"/>
+            <rect x="73" y="107" width="6" height="10" rx="2" fill="#37474f"/>
+            <rect x="83" y="107" width="6" height="10" rx="2" fill="#37474f"/>
+            <!-- Jetpack thrusters -->
+            <rect x="74" y="133" width="5" height="8" rx="2" fill="#263238"/>
+            <rect x="84" y="133" width="5" height="8" rx="2" fill="#263238"/>
+            <!-- Thruster glow -->
+            <ellipse cx="76" cy="142" rx="3" ry="5" fill="rgba(0,229,255,.35)"/>
+            <ellipse cx="86" cy="142" rx="3" ry="5" fill="rgba(0,229,255,.35)"/>
+
+            <!-- LEGS -->
+            <!-- Left leg -->
+            <path d="M68 155 L60 185 L55 185 L52 200 L68 200 L72 185 L74 155 Z" fill="url(#suit-grad)"/>
+            <!-- Right leg -->
+            <path d="M92 155 L100 185 L105 185 L108 200 L92 200 L88 185 L86 155 Z" fill="url(#suit-grad)"/>
+            <!-- Boot left -->
+            <ellipse cx="60" cy="200" rx="14" ry="7" fill="url(#boot-grad)"/>
+            <rect x="46" y="196" width="28" height="8" rx="4" fill="#37474f"/>
+            <!-- Boot right -->
+            <ellipse cx="100" cy="200" rx="14" ry="7" fill="url(#boot-grad)"/>
+            <rect x="86" y="196" width="28" height="8" rx="4" fill="#37474f"/>
+            <!-- Suit lines on legs -->
+            <line x1="62" y1="165" x2="70" y2="183" stroke="rgba(0,229,255,.2)" stroke-width="1"/>
+            <line x1="98" y1="165" x2="90" y2="183" stroke="rgba(0,229,255,.2)" stroke-width="1"/>
+
+            <!-- TORSO -->
+            <path d="M55 100 Q55 75 80 72 Q105 75 105 100 L105 155 Q105 162 97 164 Q80 167 63 164 Q55 162 55 155 Z" fill="url(#suit-grad)"/>
+
+            <!-- Suit chest panel -->
+            <rect x="68" y="110" width="24" height="30" rx="4" fill="rgba(0,0,0,.25)"/>
+            <rect x="70" y="112" width="20" height="26" rx="3" fill="#263238"/>
+            <!-- Chest panel LEDs -->
+            <circle cx="75" cy="118" r="2" fill="#00e5ff" opacity=".9"/>
+            <circle cx="82" cy="118" r="2" fill="#00e676" opacity=".9"/>
+            <circle cx="85" cy="124" r="1.5" fill="#ffd740" opacity=".8"/>
+            <circle cx="75" cy="124" r="1.5" fill="#ff1744" opacity=".7"/>
+            <!-- Panel dials -->
+            <rect x="71" y="129" width="18" height="3" rx="1" fill="#37474f"/>
+            <rect x="71" y="129" width="10" height="3" rx="1" fill="var(--accent)" opacity=".7"/>
+            <!-- Suit badge / patch -->
+            <ellipse cx="92" cy="115" rx="6" ry="7" fill="rgba(0,229,255,.12)" stroke="rgba(0,229,255,.3)" stroke-width=".8"/>
+            <text x="92" y="118" font-family="monospace" font-size="4" fill="var(--accent)" text-anchor="middle" opacity=".9">UX</text>
+            <!-- Suit seam lines -->
+            <line x1="55" y1="130" x2="105" y2="130" stroke="rgba(255,255,255,.08)" stroke-width=".8"/>
+            <line x1="55" y1="145" x2="105" y2="145" stroke="rgba(255,255,255,.08)" stroke-width=".8"/>
+
+            <!-- LEFT ARM -->
+            <path d="M55 105 Q38 110 32 130 Q28 145 35 155 L45 150 Q40 143 44 132 Q48 118 60 115 Z" fill="url(#suit-grad)"/>
+            <!-- Left glove -->
+            <ellipse cx="37" cy="156" rx="12" ry="8" fill="url(#glove-grad)"/>
+            <path d="M28 153 Q25 150 27 148 Q30 146 33 148" stroke="rgba(255,255,255,.3)" stroke-width="1" fill="none"/>
+            <!-- Arm pipe/line decoration -->
+            <path d="M45 115 Q40 122 36 133" stroke="rgba(0,229,255,.2)" stroke-width="1.2" fill="none"/>
+
+            <!-- RIGHT ARM (raised, holding something) -->
+            <path d="M105 105 Q122 108 128 126 Q133 140 128 152 L118 148 Q122 140 118 130 Q113 118 100 115 Z" fill="url(#suit-grad)"/>
+            <!-- Right glove -->
+            <ellipse cx="125" cy="153" rx="12" ry="8" fill="url(#glove-grad)"/>
+            <!-- Small tablet/device in right hand -->
+            <rect x="118" y="148" width="18" height="13" rx="2" fill="#1a1a2e" stroke="rgba(0,229,255,.4)" stroke-width=".8"/>
+            <rect x="119" y="149" width="16" height="11" rx="1" fill="#0d1b3e"/>
+            <!-- Screen glow -->
+            <rect x="120" y="150" width="14" height="9" rx="1" fill="rgba(0,229,255,.15)"/>
+            <line x1="121" y1="153" x2="133" y2="153" stroke="var(--accent)" stroke-width=".6" opacity=".6"/>
+            <line x1="121" y1="155" x2="130" y2="155" stroke="var(--accent)" stroke-width=".6" opacity=".4"/>
+            <circle cx="130" cy="152" r="1.5" fill="var(--accent)" opacity=".8"/>
+
+            <!-- NECK RING -->
+            <ellipse cx="80" cy="74" rx="18" ry="6" fill="#b0bec5"/>
+            <ellipse cx="80" cy="73" rx="16" ry="5" fill="#90a4ae"/>
+            <!-- Neck ring bolts -->
+            <circle cx="65" cy="73" r="2" fill="#546e7a"/>
+            <circle cx="95" cy="73" r="2" fill="#546e7a"/>
+            <circle cx="80" cy="68" r="2" fill="#546e7a"/>
+
+            <!-- HELMET -->
+            <ellipse cx="80" cy="45" rx="36" ry="40" fill="#c8d0dc"/>
+            <!-- Outer visor -->
+            <ellipse cx="80" cy="48" rx="27" ry="29" fill="#1a237e" opacity=".9"/>
+            <!-- Visor glass -->
+            <ellipse cx="80" cy="48" rx="25" ry="27" fill="url(#helmet-glass)"/>
+            <!-- Visor reflection -->
+            <ellipse cx="70" cy="38" rx="10" ry="8" fill="url(#visor-reflect)" opacity=".7"/>
+            <!-- Visor tint / depth -->
+            <ellipse cx="80" cy="48" rx="25" ry="27" fill="none" stroke="rgba(0,229,255,.25)" stroke-width="1.5"/>
+            <!-- Stars reflection inside visor -->
+            <circle cx="72" cy="36" r=".8" fill="white" opacity=".7"/>
+            <circle cx="86" cy="33" r=".6" fill="white" opacity=".5"/>
+            <circle cx="79" cy="30" r=".9" fill="white" opacity=".6"/>
+            <circle cx="92" cy="42" r=".6" fill="white" opacity=".4"/>
+            <circle cx="66" cy="48" r=".5" fill="white" opacity=".5"/>
+            <!-- Gold visor tint bottom -->
+            <ellipse cx="80" cy="60" rx="20" ry="14" fill="rgba(255,193,7,.06)"/>
+            <!-- Helmet top antenna -->
+            <line x1="80" y1="5" x2="80" y2="14" stroke="#90a4ae" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="80" cy="5" r="3" fill="#ff1744" opacity=".9"/>
+            <circle cx="80" cy="5" r="5" fill="rgba(255,23,68,.2)"/>
+            <!-- Helmet side details -->
+            <circle cx="45" cy="45" r="4" fill="#546e7a"/>
+            <circle cx="115" cy="45" r="4" fill="#546e7a"/>
+            <!-- Comms cable left -->
+            <path d="M45 45 Q40 55 42 65" stroke="#455a64" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <!-- Helmet seam top-->
+            <path d="M46 28 Q80 12 114 28" stroke="rgba(255,255,255,.15)" stroke-width="1" fill="none"/>
+
+            <!-- FLOATING PARTICLES around astronaut -->
+            <circle cx="20" cy="80" r="2" fill="var(--accent)" opacity=".5">
+              <animate attributeName="opacity" values=".2;.7;.2" dur="2s" repeatCount="indefinite"/>
+              <animate attributeName="cy" values="80;75;80" dur="3s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="140" cy="120" r="1.5" fill="var(--accent-2)" opacity=".4">
+              <animate attributeName="opacity" values=".3;.8;.3" dur="2.5s" repeatCount="indefinite"/>
+              <animate attributeName="cx" values="140;143;140" dur="4s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="30" cy="160" r="1.5" fill="white" opacity=".3">
+              <animate attributeName="opacity" values=".1;.5;.1" dur="3.5s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="145" cy="70" r="1" fill="var(--accent)" opacity=".4">
+              <animate attributeName="cy" values="70;65;70" dur="2.8s" repeatCount="indefinite"/>
+            </circle>
+          </svg>
+          <!-- /ASTRONAUT -->
+
+        </div>
+      </section>
+
+      <!-- SEARCH -->
+      <div class="search-wrap" role="search">
+        <svg class="search-wrap__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input class="search-input" type="search" placeholder="Where to…?" aria-label="Buscar destino">
+        <svg class="search-wrap__clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+        </svg>
+      </div>
+
+      <!-- QUICK ACTIONS -->
+      <p class="section-label" aria-label="Acciones rápidas">Quick access</p>
+      <div class="quick-actions" role="navigation" aria-label="Acciones principales">
+        <a href="travel.html" class="qa-btn qa-btn--travel">
+          <div class="qa-btn__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(-30 12 12)"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </div>
+          <span class="qa-btn__label">Travel</span>
+        </a>
+        <a href="#explore" class="qa-btn qa-btn--explore">
+          <div class="qa-btn__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"/>
+              <path d="M11 8v3l2 2"/>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+          </div>
+          <span class="qa-btn__label">Explore</span>
+        </a>
+        <a href="booking.html" class="qa-btn qa-btn--book">
+          <div class="qa-btn__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="18" rx="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+          </div>
+          <span class="qa-btn__label">Book</span>
+        </a>
+      </div>
+
+      <!-- DESTINATIONS -->
+      <div class="dest-header">
+        <p class="section-label" style="margin:0">Destinations</p>
+        <a href="travel.html" class="dest-header__link">See all →</a>
+      </div>
+
+      <ul class="dest-list" aria-label="Lista de destinos">
+        <li>
+          <a href="travel.html" class="dest-item">
+            <div class="dest-item__planet planet-earth"></div>
+            <div class="dest-item__info">
+              <p class="dest-item__name">Earth</p>
+              <p class="dest-item__sub">
+                Home planet
+                <span class="dest-item__dot"></span>
+                —
+              </p>
+            </div>
+            <span class="dest-item__price">Base</span>
+            <svg class="dest-item__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </li>
+        <li>
+          <a href="travel.html" class="dest-item">
+            <div class="dest-item__planet planet-mars"></div>
+            <div class="dest-item__info">
+              <p class="dest-item__name">Mars</p>
+              <p class="dest-item__sub">
+                18 days
+                <span class="dest-item__dot"></span>
+                Crew Dragon
+              </p>
+            </div>
+            <span class="dest-item__price">◈ 48.5</span>
+            <svg class="dest-item__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </li>
+        <li>
+          <a href="travel.html" class="dest-item">
+            <div class="dest-item__planet planet-iss"></div>
+            <div class="dest-item__info">
+              <p class="dest-item__name">ISS</p>
+              <p class="dest-item__sub">
+                2 days
+                <span class="dest-item__dot"></span>
+                Starliner
+              </p>
+            </div>
+            <span class="dest-item__price">◈ 12.0</span>
+            <svg class="dest-item__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </li>
+        <li>
+          <a href="travel.html" class="dest-item">
+            <div class="dest-item__planet planet-moon"></div>
+            <div class="dest-item__info">
+              <p class="dest-item__name">Moon</p>
+              <p class="dest-item__sub">
+                4 days
+                <span class="dest-item__dot"></span>
+                Dream Chaser
+              </p>
+            </div>
+            <span class="dest-item__price">◈ 22.8</span>
+            <svg class="dest-item__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </li>
+      </ul>
+
+    </main>
+
+    <!-- BOTTOM NAV -->
+    <nav class="bottom-nav" aria-label="Navegación principal">
+      <a href="home.html" class="nav-item nav-item--active" aria-current="page" aria-label="Home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 12L12 3l9 9"/><path d="M9 21V12h6v9"/><path d="M5 10v11h14V10"/>
+        </svg>
+        Home
+        <span class="nav-dot"></span>
+      </a>
+      <a href="#journeys" class="nav-item" aria-label="Journeys">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 2C12 2 7 6 7 13a5 5 0 0 0 10 0C17 6 12 2 12 2z"/>
+          <path d="M9 18s-2 1-2 3h10c0-2-2-3-2-3"/>
+        </svg>
+        Journeys
+      </a>
+    </nav>
+
+  </div><!-- /device -->
+
 </body>
 </html>
