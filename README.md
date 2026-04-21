@@ -30,7 +30,6 @@ Este proyecto es una interfaz web conceptual que simula la experiencia de una ap
 
 * **HTML5:** Estructura semántica.
 * **CSS3:** Layouts con Grid, Flexbox y variables dinámicas.
-* **JavaScript:** Interacciones básicas y manejo de la navegación.
 * **Google Fonts:** Tipografía personalizada.
 
 ---
@@ -48,3 +47,28 @@ Este proyecto es una interfaz web conceptual que simula la experiencia de una ap
  ┃ ┗ 📂 images
  ┣ 📜 index.html    # Entrada principal
  ┗ 📜 README.md     # Documentación
+🚀 Instalación y Uso Local
+Clona el repositorio:
+
+Bash
+git clone [https://github.com/Xanderoutl/UberX-SpaceX-Space-Rides.git](https://github.com/Xanderoutl/UberX-SpaceX-Space-Rides.git)
+Accede al directorio:
+
+Bash
+cd uberx-spacex
+Lanzamiento:
+Abre el archivo index.html en tu navegador o usa Live Server.
+
+📌 Roadmap de Mejoras
+[ ] 🔐 Autenticación: Sistema de inicio de sesión.
+
+[ ] 🗺️ Mapas: Integración con API de mapas real.
+
+[ ] 📲 PWA: Convertir en aplicación web instalable.
+
+[ ] 🌙 Modo Oscuro: Implementación de temas dinámicos.
+
+👨‍💻 Autor
+Yhony Grajales Desarrollador en formación 
+
+Hecho con entusiasmo para el futuro de la movilidad.
