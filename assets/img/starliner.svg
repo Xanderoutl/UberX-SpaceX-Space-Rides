@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 140">
+  <defs>
+    <linearGradient id="star-body" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4a148c"/>
+      <stop offset="35%" stop-color="#ce93d8"/>
+      <stop offset="65%" stop-color="#ba68c8"/>
+      <stop offset="100%" stop-color="#4a148c"/>
+    </linearGradient>
+    <linearGradient id="star-nose" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#311b92"/>
+      <stop offset="50%" stop-color="#9c27b0"/>
+      <stop offset="100%" stop-color="#311b92"/>
+    </linearGradient>
+    <linearGradient id="star-engine" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ff6f00"/>
+      <stop offset="100%" stop-color="#ffca28" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <!-- Engine glow -->
+  <ellipse cx="40" cy="136" rx="20" ry="7" fill="#ff6f0025"/>
+  <!-- Service module -->
+  <rect x="20" y="98" width="40" height="32" rx="4" fill="#4a148c"/>
+  <!-- RCS thrusters -->
+  <rect x="12" y="108" width="10" height="8" rx="2" fill="#311b92"/>
+  <rect x="58" y="108" width="10" height="8" rx="2" fill="#311b92"/>
+  <!-- Engine bell -->
+  <path d="M26 130 Q40 138 54 130 L56 120 Q40 125 24 120 Z" fill="#37474f"/>
+  <ellipse cx="40" cy="120" rx="14" ry="4" fill="#263238"/>
+  <!-- Main capsule - wider/flatter than Dragon -->
+  <path d="M14 98 L14 42 Q14 8 40 4 Q66 8 66 42 L66 98 Z" fill="url(#star-body)"/>
+  <!-- Capsule ribs -->
+  <line x1="14" y1="65" x2="66" y2="65" stroke="#7b1fa2" stroke-width="1" opacity="0.6"/>
+  <line x1="14" y1="78" x2="66" y2="78" stroke="#7b1fa2" stroke-width="1" opacity="0.6"/>
+  <line x1="14" y1="88" x2="66" y2="88" stroke="#7b1fa2" stroke-width="1" opacity="0.6"/>
+  <!-- Nose -->
+  <path d="M14 42 Q14 8 40 4 Q66 8 66 42 Z" fill="url(#star-nose)"/>
+  <!-- Docking adapter -->
+  <ellipse cx="40" cy="8" rx="10" ry="4" fill="#1a0050"/>
+  <ellipse cx="40" cy="7" rx="7" ry="2.5" fill="#311b92"/>
+  <!-- Windows - 3 windows like Starliner -->
+  <ellipse cx="27" cy="50" rx="5" ry="6" fill="#1a0050"/>
+  <ellipse cx="27" cy="50" rx="3.5" ry="4.5" fill="#ce93d8" opacity="0.5"/>
+  <ellipse cx="40" cy="46" rx="5" ry="6" fill="#1a0050"/>
+  <ellipse cx="40" cy="46" rx="3.5" ry="4.5" fill="#ce93d8" opacity="0.5"/>
+  <ellipse cx="53" cy="50" rx="5" ry="6" fill="#1a0050"/>
+  <ellipse cx="53" cy="50" rx="3.5" ry="4.5" fill="#ce93d8" opacity="0.5"/>
+  <!-- Boeing/ULA branding area -->
+  <rect x="26" y="68" width="28" height="5" rx="1" fill="#1a0050" opacity="0.5"/>
+  <text x="40" y="73" font-family="monospace" font-size="4" fill="#ce93d8" text-anchor="middle" opacity="0.9">STARLINER</text>
+  <!-- Abort motors -->
+  <rect x="12" y="56" width="4" height="10" rx="1" fill="#311b92"/>
+  <rect x="64" y="56" width="4" height="10" rx="1" fill="#311b92"/>
+</svg>

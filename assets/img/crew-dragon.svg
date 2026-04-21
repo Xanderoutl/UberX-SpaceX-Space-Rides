@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 140">
+  <defs>
+    <linearGradient id="dragon-body" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#455a64"/>
+      <stop offset="40%" stop-color="#cfd8dc"/>
+      <stop offset="70%" stop-color="#b0bec5"/>
+      <stop offset="100%" stop-color="#546e7a"/>
+    </linearGradient>
+    <linearGradient id="dragon-nose" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#37474f"/>
+      <stop offset="50%" stop-color="#90a4ae"/>
+      <stop offset="100%" stop-color="#455a64"/>
+    </linearGradient>
+    <linearGradient id="engine-glow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ff6f00"/>
+      <stop offset="50%" stop-color="#ff8f00" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#ffca28" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <!-- Engine exhaust glow -->
+  <ellipse cx="40" cy="138" rx="18" ry="6" fill="#ff6f0030"/>
+  <ellipse cx="40" cy="133" rx="12" ry="4" fill="#ff8f0040"/>
+  <!-- Trunk section -->
+  <rect x="22" y="100" width="36" height="28" rx="3" fill="#37474f"/>
+  <!-- Solar panels on trunk -->
+  <rect x="4" y="104" width="16" height="20" rx="2" fill="#1a237e" opacity="0.9"/>
+  <line x1="4" y1="108" x2="20" y2="108" stroke="#3949ab" stroke-width="0.5"/>
+  <line x1="4" y1="112" x2="20" y2="112" stroke="#3949ab" stroke-width="0.5"/>
+  <line x1="4" y1="116" x2="20" y2="116" stroke="#3949ab" stroke-width="0.5"/>
+  <line x1="4" y1="120" x2="20" y2="120" stroke="#3949ab" stroke-width="0.5"/>
+  <rect x="60" y="104" width="16" height="20" rx="2" fill="#1a237e" opacity="0.9"/>
+  <line x1="60" y1="108" x2="76" y2="108" stroke="#3949ab" stroke-width="0.5"/>
+  <line x1="60" y1="112" x2="76" y2="112" stroke="#3949ab" stroke-width="0.5"/>
+  <line x1="60" y1="116" x2="76" y2="116" stroke="#3949ab" stroke-width="0.5"/>
+  <line x1="60" y1="120" x2="76" y2="120" stroke="#3949ab" stroke-width="0.5"/>
+  <!-- Panel connectors -->
+  <line x1="20" y1="114" x2="22" y2="114" stroke="#546e7a" stroke-width="2"/>
+  <line x1="58" y1="114" x2="60" y2="114" stroke="#546e7a" stroke-width="2"/>
+  <!-- Main capsule body -->
+  <path d="M18 98 L18 40 Q18 10 40 6 Q62 10 62 40 L62 98 Z" fill="url(#dragon-body)"/>
+  <!-- Capsule detail lines -->
+  <line x1="18" y1="70" x2="62" y2="70" stroke="#546e7a" stroke-width="0.8" opacity="0.5"/>
+  <line x1="18" y1="80" x2="62" y2="80" stroke="#546e7a" stroke-width="0.8" opacity="0.5"/>
+  <line x1="18" y1="90" x2="62" y2="90" stroke="#546e7a" stroke-width="0.8" opacity="0.5"/>
+  <!-- Nose section -->
+  <path d="M18 40 Q18 10 40 6 Q62 10 62 40 Z" fill="url(#dragon-nose)"/>
+  <!-- Docking port nose -->
+  <ellipse cx="40" cy="10" rx="8" ry="4" fill="#263238"/>
+  <ellipse cx="40" cy="9" rx="5" ry="2.5" fill="#37474f"/>
+  <!-- Windows -->
+  <ellipse cx="30" cy="52" rx="6" ry="7" fill="#263238"/>
+  <ellipse cx="30" cy="52" rx="4" ry="5" fill="#81d4fa" opacity="0.8"/>
+  <ellipse cx="50" cy="52" rx="6" ry="7" fill="#263238"/>
+  <ellipse cx="50" cy="52" rx="4" ry="5" fill="#81d4fa" opacity="0.8"/>
+  <!-- Window reflection -->
+  <ellipse cx="28" cy="49" rx="1.5" ry="2" fill="white" opacity="0.4"/>
+  <ellipse cx="48" cy="49" rx="1.5" ry="2" fill="white" opacity="0.4"/>
+  <!-- Draco thrusters -->
+  <rect x="14" y="88" width="6" height="4" rx="1" fill="#37474f"/>
+  <rect x="60" y="88" width="6" height="4" rx="1" fill="#37474f"/>
+  <!-- SpaceX logo area -->
+  <rect x="28" y="72" width="24" height="6" rx="1" fill="#263238" opacity="0.5"/>
+  <text x="40" y="77" font-family="monospace" font-size="4" fill="white" text-anchor="middle" opacity="0.8">SPACEX</text>
+  <!-- Engine nozzles -->
+  <ellipse cx="32" cy="128" rx="5" ry="3" fill="#263238"/>
+  <ellipse cx="48" cy="128" rx="5" ry="3" fill="#263238"/>
+  <ellipse cx="32" cy="128" rx="3" ry="2" fill="url(#engine-glow)" opacity="0.7"/>
+  <ellipse cx="48" cy="128" rx="3" ry="2" fill="url(#engine-glow)" opacity="0.7"/>
+</svg>

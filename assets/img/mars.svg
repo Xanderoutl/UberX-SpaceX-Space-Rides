@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <defs>
+    <radialGradient id="mars-bg" cx="38%" cy="32%" r="65%">
+      <stop offset="0%" stop-color="#ef9a6e"/>
+      <stop offset="45%" stop-color="#c0392b"/>
+      <stop offset="100%" stop-color="#6b1a10"/>
+    </radialGradient>
+    <clipPath id="mars-clip">
+      <circle cx="60" cy="60" r="50"/>
+    </clipPath>
+  </defs>
+  <!-- Glow -->
+  <circle cx="60" cy="60" r="56" fill="#c0392b18"/>
+  <!-- Base -->
+  <circle cx="60" cy="60" r="50" fill="url(#mars-bg)"/>
+  <!-- Surface detail - craters -->
+  <g clip-path="url(#mars-clip)">
+    <circle cx="42" cy="52" r="8" fill="#a93226" opacity="0.6"/>
+    <circle cx="42" cy="52" r="6" fill="#b94030" opacity="0.4"/>
+    <circle cx="75" cy="65" r="6" fill="#8b1a10" opacity="0.5"/>
+    <circle cx="75" cy="65" r="4" fill="#a02520" opacity="0.3"/>
+    <circle cx="55" cy="78" r="4" fill="#8b1a10" opacity="0.4"/>
+    <circle cx="30" cy="70" r="5" fill="#7a1510" opacity="0.5"/>
+    <circle cx="82" cy="40" r="3" fill="#8b1a10" opacity="0.4"/>
+    <!-- Valles Marineris canyon suggestion -->
+    <path d="M25 58 Q60 54 95 60" stroke="#6b1108" stroke-width="4" fill="none" opacity="0.5"/>
+    <path d="M28 62 Q62 57 92 64" stroke="#7a1510" stroke-width="2" fill="none" opacity="0.3"/>
+    <!-- Polar ice cap -->
+    <ellipse cx="60" cy="18" rx="18" ry="8" fill="white" opacity="0.6"/>
+    <ellipse cx="60" cy="18" rx="12" ry="5" fill="white" opacity="0.5"/>
+    <!-- Dust storms -->
+    <ellipse cx="70" cy="45" rx="18" ry="6" fill="#ef9a6e" opacity="0.2" transform="rotate(-15 70 45)"/>
+  </g>
+  <!-- Atmosphere rim -->
+  <circle cx="60" cy="60" r="50" fill="none" stroke="#e57373" stroke-width="2" opacity="0.3"/>
+  <circle cx="60" cy="60" r="53" fill="none" stroke="#ff8a65" stroke-width="1" opacity="0.12"/>
+</svg>

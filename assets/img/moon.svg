@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <defs>
+    <radialGradient id="moon-bg" cx="40%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#e0e0e0"/>
+      <stop offset="55%" stop-color="#9e9e9e"/>
+      <stop offset="100%" stop-color="#424242"/>
+    </radialGradient>
+    <clipPath id="moon-clip">
+      <circle cx="60" cy="60" r="50"/>
+    </clipPath>
+  </defs>
+  <!-- Glow -->
+  <circle cx="60" cy="60" r="56" fill="#9e9e9e14"/>
+  <!-- Base -->
+  <circle cx="60" cy="60" r="50" fill="url(#moon-bg)"/>
+  <!-- Craters -->
+  <g clip-path="url(#moon-clip)">
+    <!-- Large mare regions -->
+    <circle cx="45" cy="50" r="16" fill="#757575" opacity="0.5"/>
+    <circle cx="72" cy="38" r="10" fill="#616161" opacity="0.4"/>
+    <circle cx="38" cy="72" r="8" fill="#6d6d6d" opacity="0.45"/>
+    <!-- Impact craters -->
+    <circle cx="65" cy="65" r="7" fill="none" stroke="#616161" stroke-width="1.5" opacity="0.6"/>
+    <circle cx="65" cy="65" r="3" fill="#757575" opacity="0.4"/>
+    <circle cx="80" cy="72" r="5" fill="none" stroke="#555" stroke-width="1" opacity="0.5"/>
+    <circle cx="80" cy="72" r="2" fill="#666" opacity="0.35"/>
+    <circle cx="30" cy="42" r="4" fill="none" stroke="#666" stroke-width="1" opacity="0.5"/>
+    <circle cx="55" cy="30" r="6" fill="none" stroke="#5a5a5a" stroke-width="1" opacity="0.45"/>
+    <circle cx="55" cy="30" r="2.5" fill="#6a6a6a" opacity="0.3"/>
+    <circle cx="85" cy="55" r="3" fill="none" stroke="#5a5a5a" stroke-width="1" opacity="0.4"/>
+    <!-- Highlight -->
+    <ellipse cx="42" cy="38" rx="10" ry="7" fill="white" opacity="0.12" transform="rotate(-20 42 38)"/>
+  </g>
+  <!-- Rim -->
+  <circle cx="60" cy="60" r="50" fill="none" stroke="#bdbdbd" stroke-width="1.5" opacity="0.3"/>
+</svg>
