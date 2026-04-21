@@ -1,61 +1,50 @@
-﻿
-🚀 UberX × SpaceX — Web App
+# 🚀 UberX × SpaceX — Web App
 
-Aplicación web inspirada en la experiencia de usuario de apps móviles tipo iPhone, combinando conceptos visuales de movilidad (UberX) con una estética futurista (SpaceX).
+Una experiencia web de movilidad futurista que fusiona la funcionalidad de **UberX** con la estética aeroespacial de **SpaceX**, todo empaquetado en una interfaz inspirada en la **UX de iOS**.
 
-🌐 Demo en vivo
+> **🌐 Demo en vivo:** [Visitar Aplicación](https://uberx-spacex-grajales.netlify.app)
 
-👉 https://uberx-spacex-grajales.netlify.app
+---
 
-📱 Descripción
+## 📱 Descripción del Proyecto
 
-Este proyecto es una interfaz web tipo aplicación móvil que simula una experiencia moderna de reservas/transporte. Está diseñada con un enfoque en:
+Este proyecto es una interfaz web conceptual que simula la experiencia de una aplicación móvil de transporte. El enfoque principal fue replicar la sensación táctil y visual de un iPhone, utilizando tecnologías web para lograr animaciones fluidas y un diseño minimalista y moderno.
 
-UI estilo app móvil (tipo iPhone)
-Diseño minimalista y moderno
-Animaciones suaves
-Experiencia centrada en el usuario
-🎯 Características
-🧭 Navegación tipo app (pantallas)
-🎨 Diseño responsive
-⚡ Interfaz fluida y ligera
-📲 Estilo visual inspirado en apps reales
-💬 Integración con WhatsApp (reservas/contacto)
-🧩 Componentes reutilizables en CSS
-🛠️ Tecnologías utilizadas
-HTML5
-CSS3 (Custom Properties + Grid + Flexbox)
-JavaScript (básico/interacciones)
-Google Fonts
-📁 Estructura del proyecto
+### 🎯 Pilares del Diseño
+* **Mobile-First:** Interfaz optimizada para flujos de navegación móvil.
+* **Estética Futurista:** Paleta de colores y tipografía inspirada en conceptos espaciales.
+* **UX Fluida:** Transiciones suaves entre pantallas que imitan el comportamiento de una app nativa.
+
+---
+
+## ⚡ Características Principales
+
+* 🧭 **Navegación por Pantallas:** Sistema de cambio de vistas simulando una app real.
+* 💬 **Integración con WhatsApp:** Botones de contacto directo para reservas.
+* 🎨 **UI Premium:** Uso de CSS Custom Properties para un diseño consistente y moderno.
+* 🧩 **Arquitectura Modular:** Componentes de CSS organizados y reutilizables.
+
+---
+
+## 🛠️ Stack Tecnológico
+
+* **HTML5:** Estructura semántica.
+* **CSS3:** Layouts con Grid, Flexbox y variables dinámicas.
+* **JavaScript:** Interacciones básicas y manejo de la navegación.
+* **Google Fonts:** Tipografía personalizada.
+
+---
+
+## 📁 Estructura del Proyecto
+
+```bash
 📦 uberx-spacex
- ┣ 📂 screens
+ ┣ 📂 screens       # Pantillas de las diferentes vistas
  ┃ ┣ 📜 home.html
- ┃ ┗ 📜 (otras pantallas)
- ┣ 📂 css
+ ┃ ┗ 📜 ...
+ ┣ 📂 css           # Estilos principales
  ┃ ┗ 📜 app.css
- ┣ 📂 assets
+ ┣ 📂 assets        # Recursos estáticos (imágenes)
  ┃ ┗ 📂 images
- ┣ 📜 index.html
- ┗ 📜 README.md
-🚀 Instalación y uso
-Clona el repositorio:
-git clone https://github.com/Xanderoutl/UberX-SpaceX-Space-Rides.git
-Abre el proyecto:
-cd uberx-spacex
-Ejecuta en navegador:
-Abre index.html o usa Live Server
-💡 Inspiración
-Apps de transporte modernas
-Interfaces iOS
-Diseño futurista tipo SpaceX
-📌 Mejoras futuras
-🔐 Sistema de autenticación
-🗺️ Integración con mapas
-📦 Backend para reservas reales
-📲 Convertir a PWA (instalable)
-🌙 Modo oscuro
-👨‍💻 Autor
-
-Yhony Grajales
-Desarrollador en formación 🚀
+ ┣ 📜 index.html    # Entrada principal
+ ┗ 📜 README.md     # Documentación
