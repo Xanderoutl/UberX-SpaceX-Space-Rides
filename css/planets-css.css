@@ -1,0 +1,450 @@
+/* ============================================
+   UberX × SpaceX — planets-css.css
+   CSS-only Planet & Spacecraft Implementations
+   Use these as alternatives to SVG files
+   ============================================ */
+
+/* ============================================
+   PLANET BASE
+   ============================================ */
+.planet {
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.planet::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.25) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+/* ---- EARTH ---- */
+.planet--earth {
+  background:
+    radial-gradient(ellipse at 38% 32%, #4fc3f7 0%, #1565c0 45%, #0d2b6b 100%);
+  box-shadow:
+    0 0 0 2px rgba(79,195,247,0.3),
+    0 0 20px rgba(79,195,247,0.15),
+    inset -8px -8px 20px rgba(13,43,107,0.6);
+}
+
+.planet--earth::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    /* Continents as blobs */
+    radial-gradient(ellipse 28% 18% at 38% 44%, rgba(46,125,50,0.85) 0%, transparent 100%),
+    radial-gradient(ellipse 16% 12% at 65% 38%, rgba(46,125,50,0.75) 0%, transparent 100%),
+    radial-gradient(ellipse 18% 14% at 72% 60%, rgba(46,125,50,0.70) 0%, transparent 100%),
+    radial-gradient(ellipse 14% 10% at 28% 65%, rgba(46,125,50,0.65) 0%, transparent 100%),
+    /* Cloud bands */
+    radial-gradient(ellipse 70% 6% at 55% 32%, rgba(255,255,255,0.22) 0%, transparent 100%),
+    radial-gradient(ellipse 55% 5% at 45% 62%, rgba(255,255,255,0.18) 0%, transparent 100%);
+}
+
+/* ---- MARS ---- */
+.planet--mars {
+  background:
+    radial-gradient(ellipse at 36% 30%, #ef9a6e 0%, #c0392b 50%, #6b1a10 100%);
+  box-shadow:
+    0 0 0 2px rgba(192,57,43,0.3),
+    0 0 20px rgba(192,57,43,0.15),
+    inset -8px -8px 20px rgba(107,26,16,0.7);
+}
+
+.planet--mars::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    /* Polar ice cap */
+    radial-gradient(ellipse 36% 16% at 50% 8%, rgba(255,255,255,0.55) 0%, transparent 100%),
+    /* Valles Marineris - canyon */
+    radial-gradient(ellipse 70% 5% at 54% 52%, rgba(107,17,8,0.55) 0%, transparent 100%),
+    /* Craters */
+    radial-gradient(circle 12% at 38% 47%, rgba(169,50,38,0.6) 0%, transparent 100%),
+    radial-gradient(circle 8% at 68% 60%, rgba(139,26,16,0.5) 0%, transparent 100%),
+    /* Dust */
+    radial-gradient(ellipse 40% 10% at 65% 42%, rgba(239,154,110,0.2) 0%, transparent 100%);
+}
+
+/* ---- MOON ---- */
+.planet--moon {
+  background:
+    radial-gradient(ellipse at 38% 32%, #e0e0e0 0%, #9e9e9e 55%, #424242 100%);
+  box-shadow:
+    0 0 0 1.5px rgba(189,189,189,0.25),
+    0 0 15px rgba(189,189,189,0.10),
+    inset -8px -8px 20px rgba(66,66,66,0.6);
+}
+
+.planet--moon::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    /* Mare regions */
+    radial-gradient(circle 22% at 42% 46%, rgba(117,117,117,0.55) 0%, transparent 100%),
+    radial-gradient(circle 15% at 66% 34%, rgba(97,97,97,0.45) 0%, transparent 100%),
+    radial-gradient(circle 10% at 34% 68%, rgba(109,109,109,0.50) 0%, transparent 100%),
+    /* Impact craters (rings) */
+    radial-gradient(circle 8% at 62% 62%, rgba(97,97,97,0.5) 0%, rgba(97,97,97,0.5) 60%, transparent 65%),
+    radial-gradient(circle 6% at 78% 70%, rgba(85,85,85,0.45) 0%, rgba(85,85,85,0.45) 55%, transparent 60%);
+}
+
+/* ---- ISS CSS ---- */
+.planet--iss {
+  background: linear-gradient(135deg, #546e7a, #cfd8dc, #90a4ae);
+  border-radius: 8px !important;
+  overflow: visible !important;
+  box-shadow: 0 0 15px rgba(144,164,174,0.2);
+}
+
+/* ---- Size variants ---- */
+.planet--xs  { width: 32px;  height: 32px; }
+.planet--sm  { width: 48px;  height: 48px; }
+.planet--md  { width: 72px;  height: 72px; }
+.planet--lg  { width: 100px; height: 100px; }
+.planet--xl  { width: 140px; height: 140px; }
+.planet--2xl { width: 200px; height: 200px; }
+
+/* ============================================
+   SPACECRAFT — CSS only
+   ============================================ */
+
+/* ---- CREW DRAGON (CSS) ---- */
+.ship {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.ship--dragon {
+  width: 40px;
+}
+
+.ship--dragon .ship__nose {
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(135deg, #90a4ae, #546e7a);
+  border-radius: 50% 50% 0 0;
+  margin: 0 auto;
+}
+
+.ship--dragon .ship__body {
+  width: 40px;
+  height: 55px;
+  background: linear-gradient(90deg, #455a64 0%, #cfd8dc 40%, #b0bec5 70%, #546e7a 100%);
+  border-radius: 4px 4px 6px 6px;
+  position: relative;
+  overflow: hidden;
+}
+
+.ship--dragon .ship__body::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 4px;
+  width: 12px;
+  height: 14px;
+  background: rgba(129,212,250,0.7);
+  border-radius: 50%;
+  box-shadow: 16px 0 0 rgba(129,212,250,0.7);
+}
+
+.ship--dragon .ship__trunk {
+  width: 36px;
+  height: 20px;
+  background: #37474f;
+  border-radius: 0 0 4px 4px;
+  position: relative;
+}
+
+.ship--dragon .ship__panels {
+  position: absolute;
+  top: 2px;
+  display: flex;
+  gap: 2px;
+}
+
+.ship__panel {
+  width: 12px;
+  height: 16px;
+  background: linear-gradient(180deg, #1a237e, #283593);
+  border-radius: 2px;
+}
+
+.ship--dragon .ship__exhaust {
+  width: 28px;
+  height: 8px;
+  background: linear-gradient(180deg, rgba(255,111,0,0.8), rgba(255,202,40,0));
+  border-radius: 0 0 50% 50%;
+  margin: 0 auto;
+}
+
+/* ============================================
+   ORBITAL ARC — CSS decoration
+   ============================================ */
+.orbital-arc {
+  position: absolute;
+  border: 1px dashed rgba(0,229,255,0.35);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* ============================================
+   ROUTE PATH — CSS dotted line
+   ============================================ */
+.route-path {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 var(--space-2);
+}
+
+.route-path__dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.5;
+  animation: pulse-dot 1.5s ease-in-out infinite;
+}
+
+.route-path__dot:nth-child(2) { animation-delay: 0.2s; }
+.route-path__dot:nth-child(3) { animation-delay: 0.4s; }
+.route-path__dot:nth-child(4) { animation-delay: 0.6s; }
+.route-path__dot:nth-child(5) { animation-delay: 0.8s; }
+.route-path__dot:nth-child(6) { animation-delay: 1.0s; }
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50%       { opacity: 1;   transform: scale(1.2); }
+}
+
+/* ============================================
+   DESTINATION CHIP — BEM
+   ============================================ */
+.destination-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  background: var(--glass-md);
+  backdrop-filter: blur(var(--blur));
+  -webkit-backdrop-filter: blur(var(--blur));
+  border: 1px solid var(--glass-border-md);
+  border-radius: var(--radius-full);
+  font-family: var(--font-display);
+  font-size: var(--fz-sm);
+  font-weight: var(--fw-semi);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-0);
+}
+
+.destination-chip__planet {
+  width: 20px;
+  height: 20px;
+}
+
+/* ============================================
+   PRICE TAG — Space currency
+   ============================================ */
+.price-tag {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 2px;
+}
+
+.price-tag__symbol {
+  font-family: var(--font-display);
+  font-size: var(--fz-sm);
+  color: var(--accent);
+  font-weight: var(--fw-bold);
+}
+
+.price-tag__amount {
+  font-family: var(--font-display);
+  font-size: var(--fz-xl);
+  color: var(--text-0);
+  font-weight: var(--fw-black);
+}
+
+.price-tag__unit {
+  font-size: var(--fz-xs);
+  color: var(--text-1);
+  font-weight: var(--fw-regular);
+  margin-left: 2px;
+}
+
+/* ============================================
+   CREDIT CARD — BEM
+   ============================================ */
+.credit-card {
+  background: linear-gradient(135deg, var(--glass-md), var(--glass));
+  backdrop-filter: blur(var(--blur));
+  -webkit-backdrop-filter: blur(var(--blur));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-4) var(--space-5);
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  cursor: pointer;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.credit-card:hover {
+  border-color: var(--glass-border-md);
+  box-shadow: var(--shadow-glow);
+}
+
+.credit-card:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.credit-card__icon {
+  width: 44px;
+  height: 30px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1565c0, #42a5f5);
+  font-family: var(--font-mono);
+  font-size: var(--fz-xs);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.05em;
+  color: white;
+  flex-shrink: 0;
+}
+
+.credit-card__info { flex: 1; }
+
+.credit-card__number {
+  font-family: var(--font-mono);
+  font-size: var(--fz-base);
+  color: var(--text-0);
+  font-weight: var(--fw-medium);
+}
+
+.credit-card__expires {
+  font-size: var(--fz-xs);
+  color: var(--text-1);
+  margin-top: 2px;
+}
+
+.credit-card__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.credit-card__action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-md);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--text-2);
+  transition: color var(--transition-fast), background var(--transition-fast);
+}
+.credit-card__action-btn:hover { color: var(--text-0); background: var(--glass); }
+.credit-card__action-btn svg { width: 16px; height: 16px; }
+
+/* ============================================
+   SWIPE CONFIRM — CSS range trick
+   ============================================ */
+.swipe-confirm {
+  position: relative;
+  width: 100%;
+  height: 60px;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.swipe-confirm__label {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: var(--fz-sm);
+  font-weight: var(--fw-semi);
+  color: var(--text-1);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.swipe-confirm__input {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  outline: none;
+  cursor: grab;
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  padding: 0 4px;
+}
+
+.swipe-confirm__input:active { cursor: grabbing; }
+
+.swipe-confirm__input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: var(--shadow-glow);
+  cursor: grab;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='9 18 15 12 9 6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 22px;
+}
+
+.swipe-confirm__input::-moz-range-thumb {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: var(--shadow-glow);
+  border: none;
+  cursor: grab;
+}
+
+.swipe-confirm__fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, rgba(0,229,255,0.15), rgba(0,229,255,0.05));
+  border-radius: var(--radius-full);
+  transition: width var(--transition-fast);
+  pointer-events: none;
+}
