@@ -1,14 +1,9 @@
-/* ============================================
-   UberX × SpaceX — app.css
-   Design Tokens + Reset + Global Styles
-   ============================================ */
+
 
 /* ---- Google Fonts Import ---- */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
 
-/* ============================================
-   DESIGN TOKENS — Custom Properties
-   ============================================ */
+
 :root {
   /* --- Colors --- */
   --color-space:       #050914;
@@ -94,9 +89,7 @@
   --device-radius: 40px;
 }
 
-/* ============================================
-   RESET
-   ============================================ */
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -134,9 +127,6 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-0);
 }
 
-/* ============================================
-   STARS BACKGROUND
-   ============================================ */
 .stars-bg {
   position: fixed;
   inset: 0;
@@ -188,9 +178,7 @@ h1, h2, h3, h4, h5, h6 {
   100% { opacity: 1; }
 }
 
-/* ============================================
-   DEVICE FRAME (Desktop wrapper)
-   ============================================ */
+
 .device-frame {
   width: 100%;
   min-height: 100vh;
@@ -210,9 +198,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* ============================================
-   GLASS CARD — Base Component (BEM)
-   ============================================ */
+
 .glass-card {
   background: var(--glass);
   backdrop-filter: blur(var(--blur));
@@ -226,9 +212,7 @@ h1, h2, h3, h4, h5, h6 {
 .glass-card--lg   { padding: var(--space-6); border-radius: var(--radius-2xl); }
 .glass-card--accent { border-color: var(--glass-border-md); box-shadow: var(--shadow-glow); }
 
-/* ============================================
-   BUTTONS — BEM
-   ============================================ */
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -277,9 +261,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: var(--fz-md);
 }
 
-/* ============================================
-   BOTTOM NAV — BEM
-   ============================================ */
+
 .bottom-nav {
   position: sticky;
   bottom: 0;
@@ -317,9 +299,6 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--accent);
 }
 
-/* ============================================
-   HEADER — BEM
-   ============================================ */
 .app-header {
   display: flex;
   align-items: center;
@@ -352,9 +331,7 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
 }
 
-/* ============================================
-   BADGE — BEM
-   ============================================ */
+
 .badge {
   display: inline-flex;
   align-items: center;
@@ -369,9 +346,7 @@ h1, h2, h3, h4, h5, h6 {
 .badge--accent   { background: rgba(0,229,255,0.15); color: var(--accent); border: 1px solid rgba(0,229,255,0.25); }
 .badge--success  { background: rgba(0,230,118,0.15); color: var(--accent-success); border: 1px solid rgba(0,230,118,0.25); }
 
-/* ============================================
-   SEARCH INPUT — BEM
-   ============================================ */
+
 .search-bar {
   position: relative;
   width: 100%;
@@ -406,9 +381,7 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 0 0 3px rgba(0,229,255,0.08);
 }
 
-/* ============================================
-   UTILITY CLASSES
-   ============================================ */
+
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -478,9 +451,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: var(--space-4) 0;
 }
 
-/* ============================================
-   ANIMATIONS — Global Keyframes
-   ============================================ */
+
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(24px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -511,9 +482,7 @@ h1, h2, h3, h4, h5, h6 {
   to   { transform: translateY(0);    opacity: 1; }
 }
 
-/* ============================================
-   RESPONSIVE BASE
-   ============================================ */
+
 @media (max-width: 480px) {
   :root { --fz-xl: 1.5rem; --fz-2xl: 2rem; }
   .grid-3 { gap: var(--space-2); }

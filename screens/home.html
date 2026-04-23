@@ -8,9 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono&display=swap" rel="stylesheet">
   <style>
-    /* =============================================
-       TOKENS
-       ============================================= */
+   
     :root {
       --accent:     #00e5ff;
       --accent-2:   #7c4dff;
@@ -46,9 +44,7 @@
     a  { color: inherit; text-decoration: none; }
     button { cursor: pointer; border: none; background: none; font: inherit; color: inherit; }
 
-    /* =============================================
-       STARS BG
-       ============================================= */
+    
     .stars-bg {
       position: fixed; inset: 0; z-index: 0;
       background:
@@ -97,9 +93,7 @@
       }
     }
 
-    /* =============================================
-       SCROLLABLE CONTENT
-       ============================================= */
+  
     .page {
       flex: 1;
       overflow-y: auto;
@@ -109,9 +103,7 @@
     }
     .page::-webkit-scrollbar { display: none; }
 
-    /* =============================================
-       HEADER
-       ============================================= */
+    
     .header {
       padding: 52px 24px 20px;
       display: flex;
@@ -148,9 +140,7 @@
       box-shadow: 0 0 14px rgba(0,229,255,.3);
     }
 
-    /* =============================================
-       SECURITY BANNER
-       ============================================= */
+    
     .banner {
       margin: 0 16px 20px;
       padding: 16px 20px;
@@ -183,9 +173,7 @@
       line-height: 1.4;
     }
 
-    /* =============================================
-       QUICK ACTIONS
-       ============================================= */
+  
     .section-label {
       padding: 0 24px;
       font-size: .68rem;
@@ -241,9 +229,7 @@
     .qa-btn--explore .qa-btn__icon { background: rgba(124,77,255,.12); color: var(--accent-2); }
     .qa-btn--book   .qa-btn__icon { background: rgba(255,109,0,.12); color: var(--accent-w); }
 
-    /* =============================================
-       SEARCH BAR
-       ============================================= */
+    
     .search-wrap {
       padding: 0 16px;
       margin-bottom: 28px;
@@ -285,9 +271,7 @@
       box-shadow: 0 0 0 3px rgba(0,229,255,.07);
     }
 
-    /* =============================================
-       ASTRONAUT + HERO
-       ============================================= */
+    
     .hero {
       padding: 0 16px 28px;
       animation: fadeInUp .5s .15s ease both;
@@ -304,7 +288,7 @@
       align-items: flex-end;
       justify-content: space-between;
     }
-    /* Glow orb inside card */
+
     .hero__card::before {
       content: '';
       position: absolute;
@@ -353,7 +337,7 @@
     .hero__cta:hover { box-shadow: var(--shadow-glow); transform: translateY(-1px); }
     .hero__cta svg { width: 14px; height: 14px; }
 
-    /* ASTRONAUT SVG */
+
     .hero__astro {
       width: 160px;
       flex-shrink: 0;
@@ -368,9 +352,7 @@
       66%       { transform: translateY(-5px) rotate(-.5deg); }
     }
 
-    /* =============================================
-       DESTINATIONS LIST
-       ============================================= */
+  
     .dest-header {
       display: flex;
       align-items: center;
@@ -411,7 +393,7 @@
       border-color: rgba(0,229,255,.2);
       transform: translateX(3px);
     }
-    /* planet thumbnails — CSS only */
+
     .dest-item__planet {
       width: 48px; height: 48px;
       border-radius: 50%;
@@ -491,9 +473,7 @@
       flex-shrink: 0;
     }
 
-    /* =============================================
-       BOTTOM NAV
-       ============================================= */
+   
     .bottom-nav {
       position: sticky;
       bottom: 0;
@@ -531,17 +511,13 @@
       display: block;
     }
 
-    /* =============================================
-       KEYFRAMES
-       ============================================= */
+    
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(18px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* =============================================
-       RESPONSIVE
-       ============================================= */
+   
     @media (max-width: 480px) {
       .hero__astro { width: 130px; }
       .header { padding-top: 40px; }
@@ -555,7 +531,7 @@
   <div class="device">
     <main class="page">
 
-      <!-- HEADER -->
+
       <header class="header">
         <div class="header__greet">
           <span class="header__sub">Good morning</span>
@@ -564,7 +540,7 @@
         <div class="header__avatar" aria-label="Avatar de usuario">CM</div>
       </header>
 
-      <!-- ASTRONAUT HERO CARD -->
+     
       <section class="hero" aria-label="Destaque de misión">
         <div class="hero__card">
           <div class="hero__copy">
@@ -578,7 +554,7 @@
             </a>
           </div>
 
-          <!-- ASTRONAUT SVG ILLUSTRATION -->
+      
           <svg class="hero__astro" viewBox="0 0 160 220" xmlns="http://www.w3.org/2000/svg" aria-label="Astronauta flotando" role="img">
             <defs>
               <radialGradient id="suit-grad" cx="40%" cy="35%" r="60%">
@@ -612,20 +588,19 @@
             <!-- SUIT SHADOW / AMBIENT -->
             <ellipse cx="80" cy="210" rx="45" ry="6" fill="rgba(0,229,255,.08)"/>
 
-            <!-- JETPACK -->
+   
             <rect x="68" y="100" width="26" height="38" rx="5" fill="#455a64"/>
             <rect x="70" y="103" width="22" height="32" rx="3" fill="#546e7a"/>
             <rect x="73" y="107" width="6" height="10" rx="2" fill="#37474f"/>
             <rect x="83" y="107" width="6" height="10" rx="2" fill="#37474f"/>
-            <!-- Jetpack thrusters -->
+            
             <rect x="74" y="133" width="5" height="8" rx="2" fill="#263238"/>
             <rect x="84" y="133" width="5" height="8" rx="2" fill="#263238"/>
-            <!-- Thruster glow -->
+         
             <ellipse cx="76" cy="142" rx="3" ry="5" fill="rgba(0,229,255,.35)"/>
             <ellipse cx="86" cy="142" rx="3" ry="5" fill="rgba(0,229,255,.35)"/>
 
-            <!-- LEGS -->
-            <!-- Left leg -->
+           
             <path d="M68 155 L60 185 L55 185 L52 200 L68 200 L72 185 L74 155 Z" fill="url(#suit-grad)"/>
             <!-- Right leg -->
             <path d="M92 155 L100 185 L105 185 L108 200 L92 200 L88 185 L86 155 Z" fill="url(#suit-grad)"/>
@@ -740,7 +715,7 @@
         </div>
       </section>
 
-      <!-- SEARCH -->
+      
       <div class="search-wrap" role="search">
         <svg class="search-wrap__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
@@ -751,7 +726,7 @@
         </svg>
       </div>
 
-      <!-- QUICK ACTIONS -->
+    
       <p class="section-label" aria-label="Acciones rápidas">Quick access</p>
       <div class="quick-actions" role="navigation" aria-label="Acciones principales">
         <a href="travel.html" class="qa-btn qa-btn--travel">
@@ -786,7 +761,7 @@
         </a>
       </div>
 
-      <!-- DESTINATIONS -->
+    
       <div class="dest-header">
         <p class="section-label" style="margin:0">Destinations</p>
         <a href="travel.html" class="dest-header__link">See all →</a>
