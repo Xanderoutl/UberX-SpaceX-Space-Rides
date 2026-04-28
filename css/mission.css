@@ -1,0 +1,112 @@
+.route {
+    position: relative;
+    height: 200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+  }
+  
+  .chip {
+    background: var(--glass);
+    backdrop-filter: blur(var(--blur));
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: bold;
+  }
+  
+  .arc {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 100px;
+  }
+  
+  .bottom-sheet {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: var(--glass);
+    backdrop-filter: blur(var(--blur));
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    padding: 1rem;
+    transition: height 0.3s;
+  }
+  
+  .toggle-label {
+    display: block;
+    text-align: center;
+    margin-bottom: 1rem;
+    cursor: pointer;
+  }
+  
+  .collapsed {
+    display: block;
+  }
+  
+  #toggle:checked ~ .collapsed {
+    display: none;
+  }
+  
+  .expanded {
+    display: none;
+  }
+  
+  #toggle:checked ~ .expanded {
+    display: block;
+  }
+  
+  .ship {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--text-1);
+  }
+  
+  .ship img {
+    width: 50px;
+    height: 50px;
+    background: var(--glass);
+    border-radius: 50%;
+  }
+  
+  .ship.active {
+    border: 2px solid var(--accent);
+    border-radius: 8px;
+  }
+  
+  .confirm {
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  .swipe {
+    margin-top: 2rem;
+  }
+  
+  .slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 10px;
+    background: var(--glass);
+    border-radius: 5px;
+    margin-top: 1rem;
+  }
+  
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 30px;
+    height: 30px;
+    background: var(--accent);
+    border-radius: 50%;
+    cursor: pointer;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>');
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
